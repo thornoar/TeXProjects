@@ -1,8 +1,8 @@
-PWD c:/Users/ramak/OneDrive/MicrosoftVSCodeProjects/TeXProjects/sonnik
+PWD f:/Projects/TeXProjects/sonnik
 INPUT c:/texlive/2023/texmf.cnf
 INPUT c:/texlive/2023/texmf-dist/web2c/texmf.cnf
 INPUT c:/texlive/2023/texmf-var/web2c/pdftex/pdflatex.fmt
-INPUT c:/Users/ramak/OneDrive/MicrosoftVSCodeProjects/TeXProjects/sonnik/sonnik.tex
+INPUT f:/Projects/TeXProjects/sonnik/sonnik.tex
 OUTPUT sonnik.log
 INPUT c:/texlive/2023/texmf-dist/tex/latex/base/book.cls
 INPUT c:/texlive/2023/texmf-dist/tex/latex/base/book.cls
@@ -850,7 +850,6 @@ INPUT c:/texlive/2023/texmf-dist/tex/latex/xkeyval/xkeyval.sty
 INPUT c:/texlive/2023/texmf-dist/tex/latex/xkeyval/xkeyval.sty
 INPUT c:/texlive/2023/texmf-dist/tex/generic/xkeyval/xkeyval.tex
 INPUT c:/texlive/2023/texmf-dist/tex/generic/xkeyval/xkvutils.tex
-INPUT c:/texlive/2023/texmf-dist/tex/latex/tempora/tempora.sty
 INPUT c:/texlive/2023/texmf-dist/tex/latex/epigraph/epigraph.sty
 INPUT c:/texlive/2023/texmf-dist/tex/latex/epigraph/epigraph.sty
 INPUT c:/texlive/2023/texmf-dist/tex/latex/epigraph/epigraph.sty

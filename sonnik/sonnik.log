@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.4.5)  1 JUN 2023 22:10
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.4.7)  7 JUN 2023 07:37
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**c:/Users/ramak/OneDrive/MicrosoftVSCodeProjects/TeXProjects/sonnik/sonnik.tex
-(c:/Users/ramak/OneDrive/MicrosoftVSCodeProjects/TeXProjects/sonnik/sonnik.tex
+**f:/Projects/TeXProjects/sonnik/sonnik.tex
+(f:/Projects/TeXProjects/sonnik/sonnik.tex
 LaTeX2e <2022-11-01> patch level 1
 L3 programming layer <2023-03-30> (c:/texlive/2023/texmf-dist/tex/latex/base/book.cls
 Document Class: book 2022/07/02 v1.4n Standard LaTeX document class
@@ -626,11 +626,11 @@ File: t2aenc.dfu 2022/06/07 v1.3c UTF-8 support
 LaTeX Font Info:    Trying to load font information for T2A+cmr on input line 112.
  (c:/texlive/2023/texmf-dist/tex/latex/cyrillic/t2acmr.fd
 File: t2acmr.fd 2001/08/11 v1.0a Computer Modern Cyrillic font definitions
-)) (c:/texlive/2023/texmf-dist/tex/generic/babel/babel.sty
+))) (c:/texlive/2023/texmf-dist/tex/generic/babel/babel.sty
 Package: babel 2023/03/28 3.87 The Babel package
 \babel@savecnt=\count294
 \U@D=\dimen165
-\l@unhyphenated=\language51
+\l@unhyphenated=\language87
  (c:/texlive/2023/texmf-dist/tex/generic/babel/txtbabel.def)
 \bbl@readstream=\read2
 \bbl@dirlevel=\count295
@@ -642,7 +642,7 @@ Package babel Info: Default for \cyrdash is provided on input line 163.
 )) (c:/texlive/2023/texmf-dist/tex/generic/babel/locale/ru/babel-russian.tex
 Package babel Info: Importing font and identification data for russian
 (babel)             from babel-ru.ini. Reported on input line 11.
-)) (c:/texlive/2023/texmf-dist/tex/latex/tempora/tempora.sty
+) (c:/texlive/2023/texmf-dist/tex/latex/tempora/tempora.sty
 Package: tempora 2016/02/02 (msharpe) Style file for Tempora.
  (c:/texlive/2023/texmf-dist/tex/latex/base/fontenc.sty
 Package: fontenc 2021/04/29 v2.0v Standard LaTeX package
@@ -2011,13 +2011,13 @@ LaTeX Font Info:    Font shape `T1/Tempora-TLF/m/n' will be
 (Font)              scaled to size 12.0pt on input line 20.
 ) ) 
 Here is how much of TeX's memory you used:
- 19105 strings out of 476696
- 300702 string characters out of 5809848
+ 19104 strings out of 476017
+ 300591 string characters out of 5793767
  1861660 words of memory out of 5000000
- 38996 multiletter control sequences out of 15000+600000
+ 39171 multiletter control sequences out of 15000+600000
  570371 words of font info for 110 fonts, out of 8000000 for 9000
- 833 hyphenation exceptions out of 8191
- 94i,8n,93p,1986b,541s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 1141 hyphenation exceptions out of 8191
+ 94i,8n,93p,1950b,541s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <c:/texlive/2023/texmf-dist/fonts/type1/public/mnsymbol/MnSymbol12.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/tempora/Tempora-Bold.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/tempora/Tempora-Italic.pfb><c:/texlive/2023/texmf-dist/fonts/type1/public/tempora/Tempora-Regular.pfb>
 Output written on sonnik.pdf (25 pages, 186498 bytes).
 PDF statistics:
