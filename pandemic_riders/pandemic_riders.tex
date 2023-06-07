@@ -1,0 +1,41 @@
+\documentclass[openany, oneside]{book}
+
+\newcommand{\lib}[1]{\input{../../Libs/LaTeX/#1}}
+
+\lib{Text}
+\lib{Math}
+\lib{Russian}
+
+\newcommand{\vf}{\vspace{5mm}}
+
+\usepackage{tempora}
+
+\usepackage{epigraph}
+
+\usepackage{geometry}
+\geometry{a4paper, top=20mm, left=20mm, right=20mm, bottom=25mm}
+
+\renewcommand{\epigraphsize}{\normalsize}
+\renewcommand{\footnotesize}{\normalsize}
+
+% \renewcommand{\epigraphsize}{\large}
+% \renewcommand{\footnotesize}{\large}
+
+% \hyphenpenalty = 10000
+% \fontdimen2\font=0.7ex
+% \fontdimen3\font=0.4em
+\renewcommand{\baselinestretch}{1.015}
+
+\sloppy
+\begin{document}
+
+\Large
+
+\fontdimen2\font=0.35em
+\fontdimen3\font=0.1em
+
+\chapter*{Всадники Пандемии}
+
+Стояла колючая зимняя ночь.
+
+\end{document}

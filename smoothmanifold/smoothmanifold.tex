@@ -1,0 +1,83 @@
+\documentclass[a4paper, 12pt]{article}
+
+\newcommand{\lib}[1]{\input{../../Libs/LaTeX/#1}}
+
+\lib{Asymptote/Asymptote}
+\lib{Animation}
+\lib{Graphics}
+\lib{Text}
+\lib{Math}
+\lib{Theorem_eng}
+\lib{Quiver/quiver}
+
+
+\usepackage[top=30mm, left=20mm, right=20mm, bottom=25mm]{geometry}
+
+\begin{document}
+
+\thispagestyle{empty}
+
+\begin{center}
+\begin{asy}
+
+import "smoothmanifold/smoothmanifold.asy" as smooth;
+
+size(18cm);
+
+smooth sm1 = samplesmooth(0);
+smooth sm2 = samplesmooth(1);
+smooth sm3 = samplesmooth(2);
+
+currentpen = linewidth(.7pt);
+
+sm1.move(shift = (9,12), scale = 3);
+sm2.move(shift = (-6,1), scale = 1.5);
+sm3.move(shift = (10,-6), rotate = 50);
+
+sm1.set_label("$S^2$", labeldir = dir(60));
+
+pair viewdir = (1,-1);
+
+draw(sm1, viewdir = viewdir);
+draw(sm2, viewdir = viewdir);
+draw(sm3, viewdir = viewdir);
+
+draw_arrow(sm2, sm1, curve = -.25, L = Label("$f$", align = W+.7*N));
+draw_arrow(sm2, sm3, ind1 = 0, curve = .3, L = "$f \circ g$", overlap = true);
+draw_arrow(sm1, sm3, curve = -.25, L = Label("$g$", align = E+.4*N));
+
+label("\Large Package \textbf{\texttt{smoothmanifold}}", (5, 5));
+label("Roman Maksimovich", (5, 3.5));
+label("\today", (5, 2));
+\end{asy}
+\end{center}
+
+\newpage
+
+\tableofcontents
+
+\newpage
+
+\section{Introduction}
+
+It is a frequent case that diagrams like this need to be drawn:
+
+\begin{center}
+\begin{asy}
+size(15cm);
+
+import "smoothmanifold/smoothmanifold.asy" as smooth;
+
+smooth sm1 = samplesmooth(0, 1);
+
+draw(sm1, viewdir = dir(-90));
+
+smooth sm2 = samplesmooth(1);
+
+sm2.move(shift = (4,0), scale = .75);
+
+draw(sm2, viewdir = dir(45));
+\end{asy}
+\end{center}
+
+\end{document}

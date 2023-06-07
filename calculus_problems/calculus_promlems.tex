@@ -1,0 +1,241 @@
+\documentclass[a4paper, 12pt]{article}
+
+\newcommand{\lib}[1]{\input{../../Libs/LaTeX/#1}}
+
+\lib{Asymptote/Asymptote}
+\lib{Animation}
+\lib{Graphics}
+\lib{Text}
+\lib{Math}
+\lib{Russian}
+\lib{Theorem_rus}
+% \usepackage{C:/Users/ramak/Dropbox/Libs/Quiver/quiver}
+
+\usepackage[top=30mm, left=20mm, right=20mm, bottom=25mm]{geometry}
+
+\newcommand{\D}{\mathcal{D}}
+\newcommand{\vf}{\varphi}
+
+\newcommand{\tr}[1]{\operator{tr}{#1}}
+
+\begin{document}
+
+
+
+\section*{Задачи по анализу}
+
+\begin{agreement*}
+    Пусть \(f\) --- непрерывная (в более широком контексте --- интегрируемая и ограниченная) на отрезке \([0,1]\) функция. Введём обозначения \[c = c(f) = \int\limits_0^1 f(x) dx; \hspace{2cm} c' = c'(f) = \int\limits_0^1 |f(x)| dx; \]\[ d = d(f) = \frac{1}{2} \int\limits_0^1 f(x)^2 dx; \hspace{2cm} e = e(f) = \frac{1}{6} \int\limits_0^1 f(x)^3 dx; \]\[ \varepsilon = \varepsilon(f) = \int\limits_0^1 e^{f(x)} dx - 1; \hspace{2cm} \varepsilon' = \varepsilon'(f) = \int\limits_0^1 e^{-f(x)} dx - 1;\] \[A^+ = A^+(0) = f^{-1}([0, +\infty)); \hspace{2cm} A^- = A^-(0) = f^{-1}((-\infty, 0));\] \vspace{0.5mm} \[\varepsilon^+ = \varepsilon^+ (f) = \int\limits_{A^+} e^{f(x)} \mu(dx) - |A^+|; \hspace{2cm} \varepsilon^- = \varepsilon^- (f) = \int\limits_{A^-} e^{f(x)} \mu(dx) - |A^-|.\]
+\end{agreement*}
+
+
+\begin{problem}
+Докажите неравенство: \[\left(\int\limits_{0}^{1} e^{f(x)} dx\right) \cdot \left(\int\limits_{0}^{1} e^{-f(x)} dx\right) \gge 1 + \frac{1}{2} \int\limits_0^1 (f(x) - c)^2 dx,\] где функция \(f\) непрерывна, а \(c = \int_0^1 f(x) \ dx\).
+\end{problem}
+
+\begin{statement}\label{help1}
+    Пусть \(n\) нечётно. Тогда для любого \(x \in \R\) справедливо неравенство \[e^x \gge 1 + x + \frac{1}{2}x^2 + \dots + \frac{1}{n!}x^n.\] Кроме того, при \(x \gge 0\) неравенство справедливо для любого \(n\).
+\end{statement}
+\begin{proof}
+    Согласно теореме Тейлора, на каждом интервале \((\alpha, \beta)\), содержащем точку \(0\), мы имеем разложение \[e^x = 1 + x + \frac{1}{2} x^2 + \dots + \frac{1}{n!}x^n + \frac{e^\xi}{(n+1)!}x^{n+1},\] где \(\xi \in (\alpha, \beta)\) зависит от \(x\). Заметим, что последний член неотрицателен при \(n = 2k + 1\) или \(x \gge 0\), из чего и следует доказываемое неравенство.
+\end{proof}
+
+\begin{proof}[Решение задачи 1]
+    Так как обе части неравенства инвариантны относительно вертикального сдвига функции \(f\) на константу, мы можем без ограничения общности предположить, что \(c = 0\). Тогда требуется показать, что \((\varepsilon + 1)(\varepsilon' + 1) \gge 1 + d\). В силу утверждения \ref{help1}, мы имеем оценки \[e^{f(x)} \gge 1 + f(x) + \frac{1}{2}f(x)^2 + \frac{1}{6}f(x)^3,\] \[e^{-f(x)} \gge 1 - f(x) + \frac{1}{2}f(x)^2 - \frac{1}{6}f(x)^3\] при всех \(x \in [0,1]\). Теперь, интегрируя эти неравенства и складывая их, мы получаем \[(\varepsilon + 1) + (\varepsilon' + 1) \gge (1 + c + d + e) + (1 -c + d - e),\] \[\varepsilon + \varepsilon' \gge 2d.\]
+    
+    Наконец, \[(\varepsilon + 1)(\varepsilon' + 1) = \varepsilon \varepsilon' + \varepsilon + \varepsilon' + 1 \gge 1 + 2d \gge 1 + d,\] что и требовалось доказать.
+\end{proof}
+
+\begin{problem}
+    Пусть \(f\) --- непрерывная функция и \[\left(\int\limits_0^1 e^{f(x)} dx\right) \cdot e^{-c} = 1 + \varepsilon,\] где \(c = \int_0^1 f(x) \ dx\). Докажите, что \(\varepsilon > 0\), и что найдётся число \(A\), не зависящее от \(f\), такое что \[\int\limits_0^1 |f(x) - c| \ dx \lle A \sqrt{\varepsilon}.\]
+\end{problem}
+
+\begin{statement}\label{help2}
+    Пусть \(f\) интегрируема на множестве \(A\). Тогда справедливо неравенство \[\int\limits_A e^{f(x)} \mu(dx) \gge |A| \cdot \exp{\left(\frac{\int\limits_A f(x) \ \mu(dx)}{|A|}\right)}.\]
+\end{statement}
+\begin{proof}
+    Обозначим \(c = \frac{\int\limits_A f(x) \ \mu(dx)}{|A|}\). В силу утверждения \ref{help1} имеем оценку \[e^{f(x)-c} \gge 1 + (f(x) - c)\] при всех \(x \in A\), а значит \[e^{-c} \int\limits_A e^{f(x)} \mu(dx) = \int\limits_A e^{f(x) - c} \mu(dx) \gge \int\limits_A (1 + f(x) - c)\ \mu(dx) = \int\limits_A 1 \ \mu(dx) + \int\limits_A (f(x) - c)\ \mu(dx) = |A|.\] Домножая на \(e^c\), получаем \[\int\limits_A e^{f(x)} \mu(dx) \gge |A| \cdot e^c.\]
+\end{proof}
+
+\begin{proof}[Решение задачи 2]
+    Так как задача инвариантна относительно вертикальных сдвигов функции \(f\), мы можем положить \(c = 0\) без ограничения общности. Интегрируя неравенство \(e^{f(x)} \gge 1 + f(x)\), мы заключаем, что \(\varepsilon \gge 0\). Нужно доказать, что \(c' \lle A \sqrt{\varepsilon}\) для некоторой фиксированной константы \(A\). Рассмотрим произвольную непрерывную функцию \(f \colon [0,1] \to \R\), такую, что \(c(f) = 0\). Если \(c' = 0\), то \(f \equiv 0\), и \(\varepsilon = 0\). Поэтому допустим, что \(c' > 0\). Далее, поскольку \(c = 0\), \[\int\limits_{A^+} f(x) \ \mu(dx) = \int\limits_{A^-} (-f(x)) \ \mu(dx) = \frac{c'}{2} > 0,\] а тогда \(|A^+| > 0\). Рассмотрим следующую кусочно-постоянную функцию: \[g(x) = \begin{cases}
+        \alpha, \ 0 \lle x \lle a,\\
+        \beta, \ a < x \lle 1
+    \end{cases}\] Здесь \(a = |A^+| > 0\), \(\alpha = \frac{c'}{2a}\) и \(\beta = \frac{-c'}{2(1-a)}\). Нетрудно видеть, что \(c(g) = 0\) и \(c'(g) = c'(f) = c'\). Теперь, применяя утверждение \ref{help2} к функции \(f\) на множестве \(A^+\), мы имеем
+
+    \begin{equation}\label{eq-1}
+        \int\limits_{A^+} e^{f(x)} \mu(dx) \gge |A^+| \cdot \exp\left(\frac{\int\limits_{A^+} f(x) \ \mu(dx)}{|A^+|}\right) = a \cdot e^\frac{c'}{2a} = \int\limits_0^a e^{g(x)}\ dx.
+    \end{equation}
+    
+    Аналогично, применяя утверждение \ref{help2} на множестве \(A^-\), мы выводим
+
+    \begin{equation}\label{eq-2}
+        \int\limits_{A^-} e^{f(x)} \mu(dx) \gge |A^-| \cdot \exp\left(\frac{\int\limits_{A^-} f(x) \ \mu(dx)}{|A^-|}\right) = (1-a) \cdot e^\frac{-c'}{2(1-a)} = \int\limits_a^1 e^{g(x)}\ dx.
+    \end{equation}
+    
+    Складывая (\ref{eq-1}) и (\ref{eq-2}), получаем, что \(\varepsilon(f) \gge \varepsilon(g)\). Наконец, \[\varepsilon(f) \gge \varepsilon(g) = a e^{\frac{c'}{2a}} + (1-a) e^\frac{-c'}{2(1-a)} - 1 \gge a\left(1 + \frac{c'}{2a} + \frac{(c')^2}{8a^2}\right) + (1-a)\left(1 - \frac{c'}{2(1-a)}\right) - 1 = \frac{(c')^2}{8a} \gge \frac{(c')^2}{8},\] а значит \[c'(f) \lle 2\sqrt{2} \cdot \sqrt{\varepsilon(f)},\] что и требовалось доказать.
+\end{proof}
+
+
+
+\renewcommand*{\arraystretch}{1}
+
+\begin{problem}
+    Пусть \(H\) --- непрерывная функция из отрезка \([0,1]\) в множество вещественных симметричных матриц \(2 \times 2\) с неотрицательными собственными числами. Докажите, что \[\left(\det \int\limits_0^1 H(x) dx\right)^\frac{1}{2} \gge \int\limits_0^1 \sqrt{\det H(x)} \ dx.\]
+\end{problem}
+
+\renewcommand*{\arraystretch}{1.6}
+
+\begin{statement}\label{dd-form}
+    Пусть функция \(f \colon \R^n \to \R\) всюду дважды дифференцируема. Рассмотрим точку \(a \in E\) и вектор \(v \in \R^n\). Для \(t \in \R\) опрелелим функции \(x = x(t) = a + tv\) и \(\vf(t) = f(x(t))\). Утверждается, что \[\vf''(t) = v \cdot H_f \cdot v = (v_1, v_2, \dots v_n) \cdot \begin{pmatrix}
+        \frac{\partial^2 f}{\partial x_1^2}(x) && \frac{\partial^2 f}{\partial x_1 \partial x_2}(x) && \hdots && \frac{\partial^2 f}{\partial x_1 \partial x_n}(x) \\
+        \frac{\partial^2 f}{\partial x_2 \partial x_1}(x) && \frac{\partial^2 f}{\partial x_2^2}(x) && \hdots && \frac{\partial^2 f}{\partial x_2 \partial x_n}(x) \\
+        \vdots && \vdots && \ddots && \vdots \\
+        \frac{\partial^2 f}{\partial x_n \partial x_1}(x) && \frac{\partial^2 f}{\partial x_n \partial x_2}(x) && \hdots && \frac{\partial^2 f}{\partial x_n^2}(x)
+    \end{pmatrix} \cdot \begin{pmatrix}
+        v_1\\
+        v_2\\
+        \vdots\\
+        v_n
+    \end{pmatrix}.\]
+\end{statement}
+\begin{proof}
+    Как известно, дифференциал композиции функций есть композиция дифференциалов, а значит матрица Якоби функции \(\vf\) есть произведение матриц Якоби функций \(x\) и \(f\), то есть \[\vf'(t) = (v_1, v_2, \dots v_n) \cdot \begin{pmatrix}
+        \frac{\partial f}{\partial x_1}(x)\\
+        \frac{\partial f}{\partial x_2}(x)\\
+        \vdots\\
+        \frac{\partial f}{\partial x_n}(x)\\
+    \end{pmatrix} = \sum\limits_{k = 1}^n v_k \frac{\partial f}{\partial x_k}(x).\] Теперь, дифференцируя предыдущее равенство и применяя его в правой части для композиции функций \(x\) и \(\frac{\partial f}{\partial x_k}\), мы получаем \[\vf''(t) = \sum\limits_{k = 1}^n v_k \left(\frac{\partial f}{\partial x_k}(x(t))\right)' = \sum\limits_{i, j = 1}^n v_i v_j \frac{\partial^2 f}{\partial x_i \partial x_j} = v \cdot H_f \cdot v.\]
+\end{proof}
+
+\begin{definition}
+    Мы называем функцию \(f \colon \R^n \to \R\) \textit{выпуклой вверх}, если подграфик \[\Gamma_f^- = \{(x, y) \mid x \in \R^n,\ y \in \R,\ y \lle f(x)\}\] --- выпуклое множество.
+\end{definition}
+
+\begin{remark}\label{real-conv}
+    Если \(\vf \colon \R \to \R\) и \(\vf''(t) \lle 0\), то \(\vf\) выпукла вверх.
+\end{remark}
+\begin{proof}
+    Достаточно доказать, что \(\vf((1-t)a + tb) \gge (1-t)\vf(a) + t\vf(b)\) при всех \(a < b\) и \(t \in [0,1]\). Пусть аффинная функция \(g\) такова, что \(g(a) = \vf(a)\) и \(g(b) = \vf(b)\). Обозначим \(h = \vf - g\). Очевидно, что \(h'' = \vf'' - g'' = \vf'' \lle 0\), а значит \(h'\) невозрастает. При этом, по теореме Ролля найдётся точка \(\xi \in (a,b)\), в которой \(h' = 0\). Тогда, во-первых, \(h\) неубывает на \([a, \xi]\), а значит \(h \gge 0\) на \([a, \xi]\). Во-вторых, \(h\) невозрастает на \([\xi, b]\), а значит \(h \gge 0\) на \([\xi, b]\). Учитывая, что \(h((1-t)a + tb) = (1-t)\vf(a) + t\vf(b)\), утверждение доказано.
+\end{proof}
+
+\begin{statement}
+    Пусть \(f \colon \R^n \to \R\). Тогда если Гессиан \(H_f\) всюду нестрого отрицательно определён, то есть \(v \cdot H_f \cdot v \lle 0\) для всех \(v \ne 0\), то функция \(f\) является \textit{выпуклой вверх}.
+\end{statement}
+\begin{proof}
+    Рассмотрим пару точек \(a, b \in \R^n\). Наша цель --- доказать, что \[f((1-t)a + tb) \gge (1-t)f(a) + tf(b)\] для всех \(t \in [0,1]\). По утверждению \ref{dd-form} вторая производная функции \(\vf(t) := f((1-t)a + tb)\) неположительна. Тогда по предыдущему замечанию \(\vf\) выпукла вверх, из чего и следует требуемое неравенство.
+\end{proof}
+
+\begin{statement}\label{help3}
+    Пусть \(p, q\) положительны и \(p \lle q\). Тогда \[\left(\int\limits_0^1 |f(x)|^p dx\right)^{\frac{1}{p}} \lle \left(\int\limits_0^1 |f(x)|^q dx\right)^{\frac{1}{q}}\] для любой интегрируемой по Риману функции \(f\).
+\end{statement}
+\begin{proof}
+    Достаточно совершить предельный переход в \href{https://en.wikipedia.org/wiki/Generalized_mean}{обобщённом неравенстве} для средних степенных для сумм Римана при \(n \to \infty\): \[\left(\frac{1}{n} \sum\limits_{k = 0}^{n-1} \left|f\left(\frac{k}{n}\right)\right|^p \right)^\frac{1}{p} \lle \left(\frac{1}{n} \sum\limits_{k = 0}^{n-1} \left|f\left(\frac{k}{n}\right)\right|^q \right)^\frac{1}{q}.\]
+\end{proof}
+
+\begin{proof}[Решение задачи 3]
+    Нетрудно видеть по определению, что что собственные числа \(2 \times 2\) матрицы \(A\) вычисляются по следующей формуле: \[\lambda_{1,2} = \frac{\tr{A} \pm \sqrt{\tr{}^2 A - 4\det{A}}}{2},\] при этом если \(A\) симметрична, то дискриминант \(\tr{}^2 A - 4 \det{A}\) неотрицателен. В таком случае очевидно, что если собственные числа неотрицательны, то \(\sqrt{\tr{}^2 A - 4\det{A}} \lle \tr{A}\), а значит \(\det{A} \gge 0\). Рассмотрим функцию \(d \colon \R^3 \to \R\), \ \  \(d(x_1, x_2, x_3) = \det \begin{pmatrix}
+        x_1 && x_2\\
+        x_2 && x_3
+    \end{pmatrix} = x_1x_3 - x_2^2\). Посчитаем Гессиан этого отображения: \[H_d = \begin{pmatrix}
+        0 && 0 && 0\\
+        0 && -2 && 0\\
+        0 && 0 && 0
+    \end{pmatrix}.\] Заметим, что \(H_d\) нестрого отрицательно определён, ведь \((x, y, z) \cdot H_d \cdot \begin{pmatrix}
+        x\\
+        y\\
+        z
+    \end{pmatrix} = -2y^2 \lle 0\). Тогда функция \(d\) выпукла вверх. Её подграфик, как выпуклое множество, содержит выпуклые комбинации своих точек, и поэтому при всех \(n\) справедливо неравенство Йенсена \[\frac{1}{n} \sum\limits_{k=0}^{n-1} d\left(H_1\left(\frac{k}{n}\right), H_2\left(\frac{k}{n}\right), H_4\left(\frac{k}{n}\right)\right) \lle d\left(\frac{1}{n} \sum\limits_{k=0}^{n-1} \left(H_1\left(\frac{k}{n}\right), H_2\left(\frac{k}{n}\right), H_4\left(\frac{k}{n}\right)\right)\right),\] или, заменяя \(d(H_1(x), H_2(x), H_4(x))\) на \(\det{H(x)}\), \[\frac{1}{n} \sum\limits_{k = 0}^{n-1} \det{H\left(\frac{k}{n}\right)} \lle \det\left(\frac{1}{n} \sum\limits_{k = 0}^{n-1} H\left(\frac{k}{n}\right)\right).\] Совершая предельный переход в последнем неравенстве при \(n \to \infty\), мы получаем, что \[\int\limits_0^1 \det{H(x)} \ dx \lle \det\int\limits_0^1 H(x) \ dx.\] Наконец, применяя утверждение \ref{help3}, мы заключаем, что \[\int\limits_0^1 \sqrt{\det{H(x)}}\ dx \lle \left(\int\limits_0^1 \det{H(x)} \ dx\right)^\frac{1}{2} \lle \left(\det\int\limits_0^1 H(x) \ dx\right)^\frac{1}{2},\] что и требовалось доказать.
+\end{proof}
+
+\end{document}
+
+
+что собственные числа \(2 \times 2\) матрицы \(A\) вычисляются по следующей формуле: \[\lambda_{1,2} = \frac{\tr{A} - \sqrt{\tr{}^2 A - 4\det{A}}}{2},\] при этом если \(A\) симметрична, то дискриминант \(\tr{}^2 A - 4 \det{A}\) неотрицателен. В таком случае очевидно, что собственные числа положительны тогда и только тогда, когда \[\sqrt{\tr{}^2 A - 4\det{A}} \lle \tr{A} \equ \det{A} \gge 0.\]
+
+
+
+%! End of document
+
+
+
+
+\begin{statement}\label{help4}
+    Пусть ограниченная интегрируемая функция \(f \colon [0,1] \to \R\) такова, что \(c(f) = 0\). Тогда \(\varepsilon(\alpha f) \lle \varepsilon(f)\) при любых \(\alpha \in [0, 1]\).
+\end{statement}
+\begin{proof}
+    Действительно, применяя утверждение \ref{help1}, напишем цепочку: \[\varepsilon(\alpha f) = \int\limits_0^1 e^{\alpha f(x)} dx - 1 = \int\limits_0^1 (e^{f(x)})^\alpha dx -1 \lle \left(\int\limits_0^1 e^{f(x)} dx\right)^\alpha - 1 = (\varepsilon(f) + 1)^\alpha - 1 \lle \varepsilon(f).\]
+\end{proof}
+
+\begin{statement}\label{help5}
+    Пусть ограниченная интегрируемая на \([0,1]\) функция \(f\) такова, что \(c(f) = 0\) и \(\varepsilon(f) = 0\). Тогда \(c'(f) = 0\). 
+\end{statement}
+\begin{proof}
+    Заметим, что при \(\alpha \lle 1\) мы имеем \(\varepsilon(\alpha f) \lle \varepsilon(f) = 0\), \(c(\alpha f) = \alpha c(f) = 0\) и \(c'(\alpha f) = \alpha c'(f)\). Поэтому, так как \(f\) ограничена, мы можем без ограничения общности предположить, что \(|f| < 1\) при всех \(x\), при необходимости домножая \(f\) на достаточно маленькую константу. Теперь, применяя утверждение \ref{help2}, мы получаем \[0 = \varepsilon(f) = \int\limits_0^1 e^{f(x)} dx - 1 \gge 1 + c + d + e - 1 = d + e \gge 0,\] а значит \(d = -e\). Тогда \(\frac{1}{2} f(x)^2 = -\frac{1}{6} f(x)^3\) почти всюду на отрезке \([0,1]\), а значит почти всюду \(f(x) = 0\), то есть \(c'(f) = 0\).
+\end{proof}
+
+\begin{statement}\label{help6}
+    Рассмотрим последовательность непрерывных функций \(f_k\), такую, что \(c(f_k) = 0\) и \(\varepsilon_k = \varepsilon(f_k) \to 0\). Тогда \(c'_k = c'(f_k) \to 0\).
+\end{statement}
+\begin{proof}
+    Предположим противное, то есть допустим, что для некоторой константы \(\delta > 0\) выполняется \(c'_k \gge \delta\) для бесконечного количества индексов. Выбирая нужную подпоследовательность, мы без ограничения общности можем положить \(c'_k \gge \delta\) для всех \(k \in \N\).
+
+    Применяя утверждение \ref{help0} к функциям \(h_k(x) = f_k(x) - \frac{c'(f_k)}{2 \mu(A_k^+)}\), где \(m\) --- мера Лебега, мы заключаем, что \[\varepsilon_k \gge \varepsilon^+_k - 1 \gge \int\limits_{A_k^+} e^{f_k(x)} \mu(dx) - 2 \gge \mu(A_k^+) \cdot e^\frac{c'_k}{2 m\left(A_k^+\right)} - 2 \gge \mu(A_k^+) \cdot e^\frac{\delta}{2 m\left(A_k^+\right)} - 2 \underset{\mu(A_k^+) \to 0}{\longrightarrow} +\infty,\] а тогда величины \(\mu(A_k^+)\) обязаны начиная с некоторого места (н.у.о. начиная с \(k = 1\)) быть ограничены снизу некоторой константой \(a > 0\). При этом можно допустить, что \(a \lle \frac{1}{2}\).
+
+    Далее, рассмотрим кусочно-постоянные функции \[g_k(x) = \begin{cases}
+        \frac{c'_k}{2 m\left(A_k^+\right)}, \ 0 \lle x \lle \mu(A_k^+),\\
+
+        \frac{- c'_k}{2 m\left(A_k^-\right)}, \ \mu(A_k^+) < x \lle 1
+    \end{cases} \ \ \ \ \ \varphi(x) = \begin{cases}
+        \frac{\delta}{2}, \ 0 \lle x \lle a,\\
+        \frac{-\delta a}{2(1 - a)}, \ a < x \lle 1 
+    \end{cases}\]
+
+    Заметим, что \(c(g_k) = c(\varphi) = 0\) и \(c'(g_k) = c'(f_k) \gge \delta\). Более того, из утверждения \ref{help0} следует, что \(\varepsilon(g_k) \lle \varepsilon(f_k)\). По предыдущему утверждению имеем \(\varepsilon(\varphi) > 0\). Наконец, последовательным применением утверждений \ref{help5} и \ref{help6} мы получаем, что \(\varepsilon(g_k) \gge \varepsilon(\varphi)\), и \[\varepsilon(f_k) \gge \varepsilon(g_k) \gge \varepsilon(\varphi) > 0,\] что противоречит условию \(\varepsilon(f_k) \to 0\).
+\end{proof}
+
+\begin{statement}\label{help7}
+    Пусть \(x \gge 0\), \(0 < \alpha \lle 1\). Справедливо неравенство \[(x + 1)^\alpha - 1 \lle x^\alpha.\]
+\end{statement}
+\begin{proof}
+    Обозначим левую часть за \(\varphi(x)\), а правую --- за \(\psi(x)\). Очевидно, что \(\varphi(0) = \psi(0)\). При этом, так как \(\alpha - 1 \lle 0\), мы имеем \[\varphi'(x) = \alpha (x + 1)^{\alpha - 1} \lle \alpha x^{\alpha - 1} = \psi'(x),\] а тогда по теореме Лагранжа \(\varphi(x) \lle \psi(x)\) при всех \(x \gge 0\). Нетрудно видеть, что при \(\alpha \gge 1\) исходное неравенство поменяет знак.
+\end{proof}
+
+\begin{statement}\label{help8}
+    Пусть функция \(f\) непрерывна на отрезке \([0, 1]\), а \(s\) --- произвольное вещественное число. Тогда каждое из множеств \[A^\lle (s) = f^{-1}([s, +\infty)),\] \[A^- (s) = f^{-1}((-\infty, s)),\] \[A^+ (s) = f^{-1}([s, +\infty)),\] \[A^> (s) = f^{-1}((-\infty, s))\] измеримо по Лебегу и имеет конечную меру.
+\end{statement}
+\begin{proof}
+    Так как функция \(f\) непрерывна, множество \(A^-(s)\) открыто в \([0,1]\), как прообраз открытого множества. Так как множество рациональных чисел всюду плотно в \([0,1]\), легко видеть, что \(A^-(s)\) разбивается в счётное объединение отрезков, и, следовательно, измеримо при любых \(s\). Оставшиеся три множества измеримы в силу следующих соотношений: \[A^\lle (s) = \newcap{n = 1}{\infty} A^- \left(s + \frac{1}{n}\right),\] \[A^+ (s) = (A^- (s))^C,\] \[A^> (s) = (A^\lle (s))^C.\] Наконец, все четыре множества содержатся в отрезке \([0,1]\), а значит их меры не превосходят \(1\).
+\end{proof}
+
+\begin{statement}\label{help9}
+    Представим себе такую картину: \(0 < a_g \lle a_f < 1\), \(a_g \lle \frac{1}{2}\), \(\alpha > 0\), \(\beta_f < \beta_g < 0\). Кусочно-постоянные функции \(f\) и \(g\) заданы следующим образом: \[f(x) = \begin{cases}
+        \alpha, \ 0 \lle x \lle a_f,\\
+        \beta_f, \ a_f < x \lle 1
+    \end{cases} \ \ \ \ \ g(x) = \begin{cases}
+        \alpha, \ 0 \lle x \lle a_g,\\
+        \beta_g, \ a_g < x \lle 1
+    \end{cases}\] Кроме того, \(c(f) = c(g) = 0\). Утверждается, что \(\varepsilon(g) \lle \varepsilon(f)\).
+\end{statement}
+\begin{proof}
+    Исходя из равенства \(c(f) = c(g) = 0\), мы выводим соотношения \[\beta_f = \frac{-\alpha a_f}{1 - a_f}, \ \ \ \ \ \beta_g = \frac{-\alpha a_g}{1 - a_g}.\] Очевидно, что \[\varepsilon(f) = a_f e^\alpha + (1 - a_f) e^{\beta_f} - 1,\] \[\varepsilon(g) = a_g e^\alpha + (1 - a_g) e^{\beta_g} - 1,\] \[\varepsilon(f) - \varepsilon(g) = (a_f-a_g)(e^\alpha - e^{\beta_g}) - (1 - a_f)(e^{\beta_g} - e^{\beta_f}) = l - w.\] Теперь, из \(a_g \lle \frac{1}{2}\) следует \(\alpha + \beta_g \gge 0\), и мы выводим \[\frac{e^\alpha - e^{\beta_g}}{\alpha - \beta_g} \gge \frac{1 + \alpha + \alpha^2/2 - 1 - \beta_g - \beta_g^2/2}{\alpha - \beta_g} \gge 1,\] а тогда \[l = (a_f-a_g)(e^\alpha - e^{\beta_g}) \gge (a_f - a_g)(\alpha - \beta_g) = \alpha (a_f - a_g)\left(1 - \frac{a_g}{1 - a_g}\right) = \alpha \frac{a_f - a_g}{1 - a_g}.\] Далее, для \(x < 0\) функция \(e^x\) является сжимающей, так как \((e^x)' = e^x < 1\), а значит \(e^{\beta_g} - e^{\beta_f} \lle \beta_g - \beta_f\). Тогда имеем цепочку \[w = (1 - a_f)(e^{\beta_g} - e^{\beta_f}) \lle (1 - a_f)(\beta_g - \beta_f) = \alpha (1 - a_f)\left(\frac{a_f}{1 - a_f} - \frac{a_g}{1 - a_g}\right) = \]\[ = \alpha \frac{a_f(1-a_g)-a_g(1-a_f)}{1-a_g} = \alpha \frac{a_f - a_g}{1 - a_g} \lle l.\] Наконец, \(\varepsilon(f) - \varepsilon(g) = l - w \gge 0,\) что и завершает доказательство.
+\end{proof}
+
+\begin{remark}
+    Пусть \(\alpha \gge \frac{1}{2}\), и неравенство \(c' \lle A \varepsilon^\alpha\) справедливо для всех непрерывных функций \(f\) из некоторого семейства \(\D\), причём если \(f \in \D\), то \(\frac{1}{2\alpha}f \in \D\). Тогда для всех \(f \in \D\) справедливо и исходное неравенство, с константой \(2\alpha A\).
+\end{remark}
+
+Действительно, в силу утверждений \ref{help1} и \ref{help3} мы имеем \[c' = \int\limits_0^1 |f(x)| dx = 2\alpha \int\limits_0^1 \left|\frac{1}{2\alpha} f(x)\right| dx \lle 2\alpha A \left(\int\limits_0^1 e^{\frac{1}{2\alpha} f(x)} dx - 1\right)^{\alpha} \lle  2\alpha A \left(\left(\int\limits_0^1 e^{f(x)} dx\right)^{\frac{1}{2\alpha}} - 1\right)^{\alpha} = \]\[ = 2\alpha A \left((\varepsilon + 1)^{\frac{1}{2\alpha}} - 1\right)^{\alpha} \lle 2\alpha A \sqrt{\varepsilon}.\]
+
+\begin{remark}
+    Теперь мы рассмотрим семейство всех непрерывных функций \(f\), таких, что \(\varepsilon (f)\) ограничено снизу некоторой постоянной величиной \(a\). Утверждается, что на этом семействе выполняется \(c' \lle A \sqrt{\varepsilon}\) для некоторой постоянной \(A\).
+\end{remark}
+
+Действительно, поскольку \(c = 0\) и \(x^2 \lle 2e^x\) при \(x \gge 0\), мы с использованием следствия к утверждению \ref{help1} выводим \[c' = \int\limits_0^1 |f(x)|\ dx = 2 \int\limits_{A^+} f(x)\ \mu(dx) \lle 2 \sqrt{|A^+|} \left(\int\limits_{A^+} f(x)^2 \mu(dx)\right)^\frac{1}{2} \lle  2 \sqrt{2} (\varepsilon + 1)^\frac{1}{2} \lle 2 \left(2 + \frac{2}{a}\right)^\frac{1}{2} \sqrt{\varepsilon},\] что и требовалось доказать.
+
+\begin{corollary*}
+Вместо всего отрезка функцию \(f\) можно интегрировать на любом его открытом/замкнутом подмножестве \(E\), и будет справедливо неравенство \[\left(\frac{1}{|E|} \int\limits_E |f(x)|^p \mu(dx)\right)^\frac{1}{p} \lle \left(\frac{1}{|E|} \int\limits_E |f(x)|^q \mu(dx)\right)^\frac{1}{q}.\]
+\end{corollary*}
+\begin{proof}
+    Во-первых, очевидно выводится путём замены, что если функция \(f\) непрерывна на отрезке \([\alpha, \beta]\), то \[\left(\frac{1}{\beta - \alpha}\int\limits_\alpha^\beta |f(x)|^p dx\right)^{\frac{1}{p}} \lle \left(\frac{1}{\beta - \alpha}\int\limits_\alpha^\beta |f(x)|^q dx\right)^{\frac{1}{q}}.\] Если \(E\) замкнуто, то его можно безопасно свести к открытому путём взятия внутренности, ведь \(\mu(\Int{E}) = |E|\). Поэтому рассмотрим открытое множество \(E \subset [0,1]\). Оно является объединением своих компонент связности: \(E = \bigcup\limits_{\alpha \in \A} U_\alpha\). Очевидно, что каждое из множеств \(U_\alpha\) является либо полуинтервалом, либо интервалом, либо отрезком. Так как \(\mu(U_\alpha) > 0\) и множество \(E\) ограничено, мы заключаем, что \(\A\) не более чем счётно. Это следует из того факта, что из любого несчётного множества положительных чисел можно выбрать ряд с бесконечной суммой. Наконец, мы выводим, что \[\frac{1}{|E|}\int\limits_E |f(x)|^p \mu(dx) = \frac{1}{|E|}\sum\limits_{\alpha \in \A} \int\limits_{U_\alpha} |f(x)|^p \mu(dx) \lle \]\[\lle \frac{1}{|E|} \sum\limits_{\alpha \in \A} \mu(U_\alpha) \left(\frac{1}{\mu(U_\alpha)} \int\limits_{U_\alpha} |f(x)|^q \mu(dx)\right)^\frac{p}{q} \lle \left(\frac{1}{|E|} \sum\limits_{\alpha \in \A} \int\limits_{U_\alpha} |f(x)|^q \mu(dx)\right)^\frac{p}{q} = \]\[ = \left(\frac{1}{|E|} \int\limits_E |f(x)|^q \mu(dx)\right)^\frac{p}{q}.\]
+\end{proof}
