@@ -1,5 +1,7 @@
 \usepackage{bm}
 \def\V#1{\bm{#1}}
+\usepackage{pstricks}
+\usepackage{pst-text}
 \usepackage{animate}
 \def\ASYprefix{}
 \long\def\ASYbase#1#2{\leavevmode\setbox\ASYbox=\hbox{#1}%\ASYdimen=\ht\ASYbox%

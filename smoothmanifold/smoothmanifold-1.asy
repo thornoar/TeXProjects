@@ -19,7 +19,7 @@ import "LaTeX/Asymptote/General.asy" as general;
 
 
 
-\if@newlist \advance \par@deathcycles \@ne \ifnum \par@deathcycles >\@m \@noitemerr {\@@par }\fi \else {\@@par }\fi import "smoothmanifold/smoothmanifold.asy" as smooth;
+import "smoothmanifold/smoothmanifold.asy" as smooth;
 
 size(18cm);
 
@@ -29,15 +29,15 @@ smooth sm3 = samplesmooth(2);
 
 currentpen = linewidth(.7pt);
 
-sm1.move(shift = (9,12), scale = 3);
-sm2.move(shift = (-6,1), scale = 1.5);
-sm3.move(shift = (10,-6), rotate = 50);
+sm1.move(shift = (9,12), scale = 4);
+sm2.move(shift = (-6,1), scale = 4.5);
+sm3.move(shift = (10,-6), scale = 4, rotate = 50);
 
 sm1.set_label("$S^2$", labeldir = dir(60));
 
-pair viewdir = (1,-1);
+pair viewdir = dir(-45);
 
-draw(sm1, viewdir = viewdir);
+draw(sm1, viewdir = viewdir, mode = "cart");
 draw(sm2, viewdir = viewdir);
 draw(sm3, viewdir = viewdir);
 

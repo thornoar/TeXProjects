@@ -1,15 +1,15 @@
 # Fdb version 4
-["cusdep asy tex smoothmanifold-1"] 0 "smoothmanifold-1.asy" "smoothmanifold-1.tex" "smoothmanifold-1" 1686086061 -1
-  "smoothmanifold-1.asy" 1686086060 1384 10f39e0ccd649d2491925d67b6ae63eb "pdflatex"
+["cusdep asy tex smoothmanifold-1"] 1686258822 "smoothmanifold-1.asy" "smoothmanifold-1.tex" "smoothmanifold-1" 1686258830 0
+  "smoothmanifold-1.asy" 1686258830 1296 300998c82a37242eeb4c1092e6eb482c "pdflatex"
   (generated)
   "smoothmanifold-1.tex"
   (rewritten before read)
-["cusdep asy tex smoothmanifold-2"] 1686086053 "smoothmanifold-2.asy" "smoothmanifold-2.tex" "smoothmanifold-2" 1686086061 0
-  "smoothmanifold-2.asy" 1686086060 686 0655d051814dab89c7d94388941a927c "pdflatex"
+["cusdep asy tex smoothmanifold-2"] 1686086053 "smoothmanifold-2.asy" "smoothmanifold-2.tex" "smoothmanifold-2" 1686258830 0
+  "smoothmanifold-2.asy" 1686258830 686 0655d051814dab89c7d94388941a927c "pdflatex"
   (generated)
   "smoothmanifold-2.tex"
   (rewritten before read)
-["pdflatex"] 1686086058 "s:/Projects/TeXProjects/smoothmanifold/smoothmanifold.tex" "smoothmanifold.pdf" "smoothmanifold" 1686086061 0
+["pdflatex"] 1686258828 "s:/Projects/TeXProjects/smoothmanifold/smoothmanifold.tex" "smoothmanifold.pdf" "smoothmanifold" 1686258830 0
   "../../Libs/LaTeX/Animation.tex" 1667036816 3698 aa6144e629a72d228035d5661f6e641b ""
   "../../Libs/LaTeX/Asymptote/Asymptote.tex" 1686084779 994 97742e10b7b009406cc8a432fdfbfe7f ""
   "../../Libs/LaTeX/Graphics.tex" 1678302741 637 3775bbadfa0d26bc0723d657e6821c80 ""
@@ -253,17 +253,17 @@
   "c:/texlive/2023/texmf-var/web2c/pdftex/pdflatex.fmt" 1680658305 7725222 e65dea3f71175c54f706046bde2f68ab ""
   "c:/texlive/2023/texmf.cnf" 1680658186 713 e69b156964470283e0530f5060668171 ""
   "s:/Projects/Libs/LaTeX/Quiver/quiver.sty" 1686084026 1674 667005e313a71d6a42f90b326cea24a0 ""
-  "s:/Projects/TeXProjects/smoothmanifold/smoothmanifold.tex" 1686086041 1696 19e1ca6bd8cc407755433cf7e392e6f7 ""
-  "smoothmanifold-1.pre" 1673218227 747 fac32cf86b4f6ece93c0c7fe2f2ea29d ""
-  "smoothmanifold-1.tex" 1673218228 1652 a7fc3e060ca5f2c14fc17ca5b321eb3c "cusdep asy tex smoothmanifold-1"
-  "smoothmanifold-1_0.pdf" 1673218227 6674 5267e107646ab9d040168c19b38aa602 ""
+  "s:/Projects/TeXProjects/smoothmanifold/smoothmanifold.tex" 1686258818 1724 ffc0017a8a7bdb7fde910f1e0858dca2 ""
+  "smoothmanifold-1.pre" 1686258825 791 74e2503ddc4bbb4c638b6bc14855444b ""
+  "smoothmanifold-1.tex" 1686258825 1914 1789e271abe37871a72126bbe0984f41 "cusdep asy tex smoothmanifold-1"
+  "smoothmanifold-1_0.pdf" 1686258825 8217 1223eb53d8a22ba7af50e7bc9e1ae54d ""
   "smoothmanifold-2.pre" 1686086056 791 74e2503ddc4bbb4c638b6bc14855444b ""
   "smoothmanifold-2.tex" 1686086056 593 898ab5241d7638efe69ca35333a45c8a "cusdep asy tex smoothmanifold-2"
   "smoothmanifold-2_0.pdf" 1686086056 4463 67250ea43a300cf609e9990cde73edb9 ""
-  "smoothmanifold.aux" 1686086060 1026 47446a01050fe4654db96a18e897069d "pdflatex"
-  "smoothmanifold.pre" 1686086060 82 2085988704c78000e4a8d1b1c9ada1e4 "pdflatex"
-  "smoothmanifold.tex" 1686086041 1696 19e1ca6bd8cc407755433cf7e392e6f7 ""
-  "smoothmanifold.toc" 1686086060 68 dcca568055fb044d825789aea43bd96a "pdflatex"
+  "smoothmanifold.aux" 1686258830 1026 47446a01050fe4654db96a18e897069d "pdflatex"
+  "smoothmanifold.pre" 1686258830 82 2085988704c78000e4a8d1b1c9ada1e4 "pdflatex"
+  "smoothmanifold.tex" 1686258818 1724 ffc0017a8a7bdb7fde910f1e0858dca2 ""
+  "smoothmanifold.toc" 1686258830 68 dcca568055fb044d825789aea43bd96a "pdflatex"
   (generated)
   "smoothmanifold-1.asy"
   "smoothmanifold-2.asy"
